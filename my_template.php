@@ -125,7 +125,7 @@
                           <?php   while ( have_posts() ) : the_post(); ?>
                             <?php $alt_text = get_post_meta( $post->ID, 'Service_icon', true ); ?>
 
-                           <?php $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array(600, 400));?>
+                           <?php $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'portfolio-img');?>
                             <?php $thumbnail_large = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
 
                                 <div class="col-xs-12 col-sm-6 col-md-4 single-work">
@@ -166,65 +166,37 @@
 
             <div class="row">
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/services/ux.svg">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">UI/UX Design</h3>
-                            <p>Hydroderm is the highly desired anti-aging cream on</p>
-                        </div>
-                    </div>
-                </div>
+                        
+                   <?php                          
+                        query_posts(array(
+                            'post_type'=>'service',
+                            'posts_per_page'=>6,
+                            'orderby'=>'meta_value',
+                            'order'=>'ASC'
+                        )); ?>
+        
+                          <?php   while ( have_posts() ) : the_post(); ?>
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/services/web.svg">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">Web Design</h3>
-                            <p>Hydroderm is the highly desired anti-aging cream on</p>
-                        </div>
-                    </div>
-                </div>
+                           <?php $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'service-img');?>
+                           
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/services/motion.svg">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">Motion Graphics</h3>
-                            <p>Hydroderm is the highly desired anti-aging cream on</p>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="media services-wrap fadeInDown">
+                                    <div class="pull-left">
+                                        <img class="img-responsive" src="<?php echo $image_attributes[0]; ?>">
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="media-heading"><?php the_title(); ?></h3>
+                                        <?php the_excerpt(); ?>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/services/mobile-ui.svg">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">Mobile UI/UX</h3>
-                            <p>Hydroderm is the highly desired anti-aging cream on</p>
-                        </div>
-                    </div>
-                </div>
+                          <?php   endwhile; ?>
+                            
+                         
+                        <?php wp_reset_query(); ?>      
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/services/web-app.svg">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">Web Applications</h3>
-                            <p>Hydroderm is the highly desired anti-aging cream on</p>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap fadeInDown">

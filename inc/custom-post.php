@@ -28,6 +28,24 @@
             ),
             'supports'=>array('title','editor','excerpt','thumbnail','page-attributes'), 
         ));
+        register_post_type('service', array(
+            'public'=> true,
+            'label'=>'service',
+            'labels'=>array(
+                'name'=>'services',
+                'add_new'=>'add new service',
+            ),
+            'supports'=>array('title','editor','excerpt','thumbnail','page-attributes'),
+        ));
+        register_post_type('video', array(
+            'public'=> true,
+            'label'=>'service',
+            'labels'=>array(
+                'name'=>'services',
+                'add_new'=>'add new service',
+            ),
+            'supports'=>array('title','editor','excerpt','thumbnail','page-attributes'),
+        ));
     }
     add_action('init', 'corlate_custom_post');
 ?>
